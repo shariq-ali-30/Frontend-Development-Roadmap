@@ -79,14 +79,16 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  min-height: 100vh;
 }
 
 .container {
-  width: 97vw;
+  width: 100vw;
+  max-width: 1200px;
   border-radius: 12px;
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
-  padding: 20px 80px;
+  padding: 25px 80px;
 }
 
 header {
@@ -218,12 +220,100 @@ header div p {
   border-radius: 999px;
 }
 
-.main-section .content .right p {
+.main-section .content .right>p {
   margin-top: 16px;
   max-width: 400px;
   font-size: 14px;
 }
 
 .main-section .content .right .list {
-  margin-top: 16px;
+  margin-top: 20px;
+}
+
+.main-section .content .right .list .item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.main-section .content .right .list .item .icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: 26px;
+  background-color: var(--icon-bg);
+  color: var(--icon-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-section .content .right .list .item div p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.main-section .content .right .list .item div span {
+  font-size: 12px;
+  color: var(--body-text-secondary);
+}
+
+.divider-x {
+  width: 100%;
+  border-bottom: var(--card-border);
+}
+
+.main-section .btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+}
+
+.main-section .btns button {
+  width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.proTip {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background-color: var(--tip-bg);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proTip>i {
+  font-size: 26px;
+  color: var(--primary-color);
+}
+
+.proTip>div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.proTip>div .icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: var(--tip-icon);
+  background-color: var(--tip-icon-bg);
 }

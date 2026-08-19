@@ -49,34 +49,52 @@ const MainContent = () => {
                                 <div className="icon">
                                     <i class="ph ph-browser"></i>
                                 </div>
-                                <p>Structure the Web</p>
-                                <span>Learn how HTML elements create the structure of web page.</span>
+                                <div>
+                                    <p>Structure the Web</p>
+                                    <span>Learn how HTML elements create the structure of web page.</span>
+                                </div>
                             </div>
                             <div className="item">
                                 <div className="icon">
                                     <i class="ph ph-browser"></i>
                                 </div>
-                                <p>Structure the Web</p>
-                                <span>Learn how HTML elements create the structure of web page.</span>
+                                <div>
+                                    <p>Structure the Web</p>
+                                    <span>Learn how HTML elements create the structure of web page.</span>
+                                </div>
                             </div>
                             <div className="item">
                                 <div className="icon">
                                     <i class="ph ph-browser"></i>
                                 </div>
-                                <p>Structure the Web</p>
-                                <span>Learn how HTML elements create the structure of web page.</span>
+                                <div>
+                                    <p>Structure the Web</p>
+                                    <span>Learn how HTML elements create the structure of web page.</span>
+                                </div>
                             </div>
+
 
                         </div>
                     </div>
 
                 </div>
 
-                <div className="btns">
-                    <button><i className="ph ph-arrow-left"></i> Previous</button>
-                    <button>Next <i className="ph ph-arrow-right"></i></button>
-                </div>
+                <div className="divider-x"></div>
 
+                <div className="btns">
+                    <button><i className="ph-bold ph-arrow-left"></i> Previous</button>
+                    <button>Next <i className="ph-bold ph-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <div className="proTip">
+                <div>
+                    <div className="icon">
+                        <i class="ph-fill ph-lightbulb"></i>
+                    </div>
+                    <p><span>Pro Tip: </span> Learn the basics of HTML well, it will make your journey easier ahead!</p>
+                </div>
+                <i class="ph ph-sparkle"></i>
             </div>
         </>
     )
