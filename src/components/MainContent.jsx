@@ -1,34 +1,21 @@
-import React from 'react'
-import htmlImage from '../assets/html.png'
+import React, { useState } from 'react'
+import steps from '../steps.js'
 
 const MainContent = () => {
+    let [stepCount, setStepCount] = useState(1)
+
     return (
         <>
             <div className="steps-section">
-                <div className="step active">
-                    1
-                    <span>HTML</span>
-                </div>
-                <div className="progress-line"><span></span></div>
-                <div className="step">
-                    2
-                    <span>CSS</span>
-                </div>
-                <div className="progress-line"><span></span></div>
-                <div className="step">
-                    3
-                    <span>JavaScript</span>
-                </div>
-                <div className="progress-line"><span></span></div>
-                <div className="step">
-                    4
-                    <span>React</span>
-                </div>
-                <div className="progress-line"><span></span></div>
-                <div className="step">
-                    5
-                    <span>Tools & Deployment</span>
-                </div>
+                {steps.map((step) => (
+                    <React.Fragment key={step.stepNumber} >
+                        <div className={`step ${stepCount >= step.stepNumber ? "active" : ""}`}>
+                            {step.stepNumber}
+                            <span>{step.name}</span>
+                        </div>
+                        <div className={`progress-line ${stepCount > step.stepNumber ? "active" : ""}`}><span></span></div>
+                    </React.Fragment>
+                ))}
             </div>
 
             <div className="main-section">
@@ -36,44 +23,28 @@ const MainContent = () => {
                 <div className="content">
 
                     <div className="left">
-                        <img src={htmlImage} width={150} />
+                        <div>
+                            <img src={steps[stepCount - 1].image} />
+                            <h2>{steps[stepCount - 1].name}</h2>
+                        </div>
                     </div>
                     <div className="divider-y"></div>
                     <div className="right">
-                        <h2><span></span> HTML</h2>
-                        <p>HTML (HyperText Markup Language) is the foundation of every web page. It provides the basic structure and content of a website.
-                        </p>
-                        <div className="list">
+                        <h2><span></span> {steps[stepCount - 1].name}</h2>
+                        <p>{steps[stepCount - 1].description}</p>
+                        <div className="features">
 
-                            <div className="item">
-                                <div className="icon">
-                                    <i class="ph ph-browser"></i>
+                            {steps[stepCount - 1].features.map((feature, idx) => (
+                                <div className="item" key={idx}>
+                                    <div className="icon">
+                                        <i className={feature.icon}></i>
+                                    </div>
+                                    <div>
+                                        <p>{feature.title}</p>
+                                        <span>{feature.description}</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>Structure the Web</p>
-                                    <span>Learn how HTML elements create the structure of web page.</span>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon">
-                                    <i class="ph ph-browser"></i>
-                                </div>
-                                <div>
-                                    <p>Structure the Web</p>
-                                    <span>Learn how HTML elements create the structure of web page.</span>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div className="icon">
-                                    <i class="ph ph-browser"></i>
-                                </div>
-                                <div>
-                                    <p>Structure the Web</p>
-                                    <span>Learn how HTML elements create the structure of web page.</span>
-                                </div>
-                            </div>
-
-
+                            ))}
                         </div>
                     </div>
 
@@ -82,19 +53,20 @@ const MainContent = () => {
                 <div className="divider-x"></div>
 
                 <div className="btns">
-                    <button><i className="ph-bold ph-arrow-left"></i> Previous</button>
-                    <button>Next <i className="ph-bold ph-arrow-right"></i></button>
+                    <button className={stepCount == 1 ? "disabled" : ""} onClick={() => setStepCount(stepCount - 1)}><i className="ph-bold ph-arrow-left"></i> Previous</button>
+                    <p>{`${stepCount} / ${steps.length}`}</p>
+                    <button className={stepCount == steps.length ? "disabled" : ""} onClick={() => setStepCount(stepCount + 1)}>Next <i className="ph-bold ph-arrow-right"></i></button>
                 </div>
             </div>
 
             <div className="proTip">
                 <div>
                     <div className="icon">
-                        <i class="ph-fill ph-lightbulb"></i>
+                        <i className="ph-fill ph-lightbulb"></i>
                     </div>
-                    <p><span>Pro Tip: </span> Learn the basics of HTML well, it will make your journey easier ahead!</p>
+                    <p><span>Pro Tip: </span> {steps[stepCount - 1].proTip}</p>
                 </div>
-                <i class="ph ph-sparkle"></i>
+                <i className="ph ph-sparkle"></i>
             </div>
         </>
     )

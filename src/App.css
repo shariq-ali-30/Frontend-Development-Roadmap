@@ -78,66 +78,76 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: clamp(10px, 3vw, 20px);
   min-height: 100vh;
 }
 
 .container {
   width: 100vw;
-  max-width: 1200px;
-  border-radius: 12px;
+  max-width: clamp(300px, 90vw, 1200px);
+  border-radius: clamp(8px, 1.5vw, 12px);
   box-shadow: var(--card-shadow);
   background-color: var(--card-bg);
-  padding: 25px 80px;
+  padding: clamp(15px, 2.5vw, 25px) clamp(12px, 7vw, 80px);
 }
 
 header {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 20px);
 }
 
 header .icon {
-  height: 55px;
-  width: 55px;
-  border-radius: 10px;
+  flex-shrink: 0;
+  height: clamp(40px, 5vw, 55px);
+  width: clamp(40px, 5vw, 55px);
+  border-radius: clamp(6px, 1vw, 10px);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--icon-bg);
   color: var(--primary-color);
-  font-size: 30px;
+  font-size: clamp(20px, 3vw, 30px);
 }
 
 header div h1 {
-  font-size: 30px;
-  margin-bottom: 6px;
+  text-align: center;
+  font-size: clamp(20px, 3vw, 30px);
+  margin-bottom: clamp(3px, 0.5vw, 6px);
 }
 
 header div p {
   color: var(--body-text-secondary);
-  font-size: 14px;
+  font-size: clamp(12px, 1.2vw, 14px);
 }
 
 .steps-section {
-  margin-top: 20px;
+  padding: 0 20px;
+  margin-top: clamp(12px, 2vw, 20px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .steps-section .step {
+  flex-shrink: 0;
   position: relative;
-  height: 40px;
-  width: 40px;
+  height: clamp(30px, 3.5vw, 40px);
+  width: clamp(30px, 3.5vw, 40px);
   border-radius: 50%;
-  font-size: 17px;
+  font-size: clamp(13px, 1.5vw, 17px);
   font-weight: 500;
   color: var(--progress-muted);
   border: var(--step-border);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition:
+    color 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .steps-section .step.active {
@@ -149,9 +159,10 @@ header div p {
 .steps-section .step span {
   white-space: nowrap;
   position: absolute;
-  font-size: 12px;
+  font-size: clamp(10px, 1vw, 12px);
   font-weight: 500;
-  top: 50px;
+  top: clamp(35px, 4.5vw, 50px);
+  transition: color 0.35s ease;
 }
 
 .steps-section .step.active span {
@@ -159,10 +170,14 @@ header div p {
 }
 
 .steps-section .progress-line {
-  height: 3px;
-  width: 150px;
+  height: clamp(2px, 0.3vw, 3px);
+  width: clamp(60px, 12vw, 150px);
   position: relative;
   background-color: var(--step-line);
+}
+
+.steps-section .progress-line:last-child {
+  display: none;
 }
 
 .steps-section .progress-line span {
@@ -172,7 +187,7 @@ header div p {
   width: 0;
   height: inherit;
   background-color: var(--primary-color);
-  transition: width 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: width 0.35s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .steps-section .progress-line.active span {
@@ -180,24 +195,38 @@ header div p {
 }
 
 .main-section {
-  margin-top: 40px;
+  margin-top: clamp(32px, 3.5vw, 40px);
   width: 100%;
   background-color: var(--card-bg);
   border: var(--card-border);
-  border-radius: 14px;
+  border-radius: clamp(8px, 1.5vw, 14px);
 }
 
 .main-section .content {
   display: flex;
-  height: 400px;
+  justify-content: center;
+  height: auto;
 }
 
 .main-section .content .left {
+  padding: clamp(15px, 2.5vw, 30px);
   width: 100%;
-  max-width: 450px;
+  max-width: clamp(280px, 38vw, 450px);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main-section .content .left div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 1vw, 10px);
+  font-size: clamp(20px, 2.5vw, 30px);
+}
+
+.main-section .content .left div img {
+  height: clamp(120px, 18vw, 200px);
 }
 
 .main-section .content .divider-y {
@@ -206,42 +235,43 @@ header div p {
 
 .main-section .content .right {
   flex-grow: 1;
-  padding: 30px;
+  padding: clamp(15px, 2.5vw, 30px);
 }
 
 .main-section .content .right h2 {
-  font-size: 30px;
+  font-size: clamp(20px, 2.5vw, 30px);
   display: flex;
-  gap: 14px;
+  gap: clamp(8px, 1.2vw, 14px);
 }
 
 .main-section .content .right h2 span {
-  border: 2.5px solid var(--primary-color);
+  border: clamp(1.5px, 0.2vw, 2.5px) solid var(--primary-color);
   border-radius: 999px;
 }
 
 .main-section .content .right>p {
-  margin-top: 16px;
-  max-width: 400px;
-  font-size: 14px;
+  margin-top: clamp(10px, 1.5vw, 16px);
+  max-width: clamp(280px, 35vw, 400px);
+  font-size: clamp(12px, 1.2vw, 14px);
 }
 
-.main-section .content .right .list {
-  margin-top: 20px;
+.main-section .content .right .features {
+  margin-top: clamp(12px, 2vw, 20px);
 }
 
-.main-section .content .right .list .item {
+.main-section .content .right .features .item {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: clamp(10px, 1.4vw, 16px);
+  margin-bottom: clamp(16px, 1.8vw, 20px);
 }
 
-.main-section .content .right .list .item .icon {
-  height: 50px;
-  width: 50px;
+.main-section .content .right .features .item .icon {
+  flex-shrink: 0;
+  height: clamp(35px, 4vw, 50px);
+  width: clamp(35px, 4vw, 50px);
   border-radius: 50%;
-  font-size: 26px;
+  font-size: clamp(18px, 2.2vw, 26px);
   background-color: var(--icon-bg);
   color: var(--icon-color);
   display: flex;
@@ -249,13 +279,15 @@ header div p {
   align-items: center;
 }
 
-.main-section .content .right .list .item div p {
-  font-size: 14px;
+.main-section .content .right .features .item div p {
+  font-size: clamp(12px, 1.2vw, 14px);
   font-weight: 600;
 }
 
-.main-section .content .right .list .item div span {
-  font-size: 12px;
+.main-section .content .right .features .item div span {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(10px, 1vw, 12px);
   color: var(--body-text-secondary);
 }
 
@@ -268,52 +300,117 @@ header div p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
+  padding: clamp(12px, 2.2vw, 25px);
 }
 
 .main-section .btns button {
-  width: 130px;
+  width: clamp(90px, 11vw, 130px);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 0;
+  gap: clamp(5px, 1vw, 10px);
+  padding: clamp(6px, 0.8vw, 10px) 0;
   background-color: var(--button-bg);
   color: var(--button-text);
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: clamp(3px, 0.5vw, 5px);
+  font-size: clamp(13px, 1.3vw, 16px);
+  cursor: pointer;
+  user-select: none;
+}
+
+.main-section .btns button.disabled {
+  background-color: #e8e5ef;
+  color: #9a96a8;
+  border-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.75;
+  box-shadow: none;
+  transform: none;
+  pointer-events: none;
+}
+
+.main-section .btns p {
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--primary-color);
+  font-weight: 500;
 }
 
 .proTip {
-  margin-top: 20px;
-  padding: 10px 16px;
+  color: var(--tip-text);
+  margin-top: clamp(10px, 1.5vw, 16px);
+  padding: clamp(8px, 1.2vw, 12px) clamp(10px, 1.5vw, 16px);
   background-color: var(--tip-bg);
-  border-radius: 10px;
+  border-radius: clamp(6px, 1vw, 10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .proTip>i {
-  font-size: 26px;
+  font-size: clamp(18px, 2.2vw, 26px);
   color: var(--primary-color);
 }
 
 .proTip>div {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(8px, 1.2vw, 14px);
 }
 
 .proTip>div .icon {
-  height: 40px;
-  width: 40px;
+  flex-shrink: 0;
+  height: clamp(30px, 3.5vw, 40px);
+  width: clamp(30px, 3.5vw, 40px);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: clamp(14px, 1.8vw, 20px);
   color: var(--tip-icon);
   background-color: var(--tip-icon-bg);
+}
+
+.proTip>div p {
+  font-size: clamp(10px, 1.2vw, 14px);
+}
+
+.proTip>div p span {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media (max-width: 800px) {
+
+  .main-section .content {
+    flex-direction: column;
+  }
+
+  .main-section .content .left {
+    max-width: 100%;
+  }
+
+  .main-section .content .right>p {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 400px) {
+  * {
+    cursor: default !important;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  .container {
+    min-height: 100vh;
+    max-width: 100%;
+    padding: 20px 12px;
+  }
 }
